@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+        <script src = "movies.js"></script>
+        <link rel = "stylesheet" type = "text/css" href = "movies.css">
+        <title>Movie Chooser</title>
+    </head>
+    <body ng-app = "movieApp" ng-controller = "movieCtrl">
+        <div id = "container">
+        <div>
+            <h1>Welcome to the Movie Chooser!</h1>
+            <h2>Can't agree on a movie to watch? Add potential movies to the list, and have up to five people give each a numerical rating.
+                (1 = first choice, 2 = second choice, etc.) Hit the submit button to hide ratings.
+                Once everyone's submitted their ratings, hit the calculate button, and I'll reveal which movie had the smallest, and therefore
+                best, overall rating.</h2><br>
+            <h2>Add a Movie to the List:</h2>
+            <input type = "text" ng-model = "movie.name">
+            <button ng-click = "addToList()">Add Movie</button>
+        </div><br>
+        <table>
+            <th>Movies</th>
+            <tr ng-repeat = "movie in movies">
+                <td>{{movie.name | uppercase}}</td>
+                <td><input type = "number" ng-model = "movie.vote1" ng-show = "showVote1"></td>
+                <td><input type = "number" ng-model = "movie.vote2" ng-show = "showVote2"></td>
+                <td><input type = "number" ng-model = "movie.vote3" ng-show = "showVote3"></td>
+                <td><input type = "number" ng-model = "movie.vote4" ng-show = "showVote4"></td>
+                <td><input type = "number" ng-model = "movie.vote5" ng-show = "showVote5"></td>
+            </tr>
+            <th>Submit and Hide Votes:
+                <td><button ng-click = "hideVotes1()">Submit</button></td>
+                <td><button ng-click = "hideVotes2()">Submit</button></td>
+                <td><button ng-click = "hideVotes3()">Submit</button></td>
+                <td><button ng-click = "hideVotes4()">Submit</button></td>
+                <td><button ng-click = "hideVotes5()">Submit</button></td>
+            </th>
+        </table><br>
+        <p ng-repeat = "movie in movies">
+            Movie: {{movie.name}}, {{movie.vote1}}, {{movie.vote2}}, {{movie.vote3}}, {{movie.vote4}}, {{movie.vote5}}, {{movie.vote1 + movie.vote2 + movie.vote3 + movie.vote4 + movie.vote5}}
+        </p>
+        <button ng-click = "calculateMovie()">Calculate</button>
+        <h1>The winner is . . . {{winner | uppercase}}</h1>
+        </div>
+    </body>
+</html>
+
+
+
+
+
+
