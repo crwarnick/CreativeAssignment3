@@ -36,9 +36,6 @@
                 <td><button ng-click = "hideVotes5()">Submit</button></td>
             </th>
         </table><br>
-        <p ng-repeat = "movie in movies">
-            Movie: {{movie.name}}, {{movie.vote1}}, {{movie.vote2}}, {{movie.vote3}}, {{movie.vote4}}, {{movie.vote5}}, {{movie.vote1 + movie.vote2 + movie.vote3 + movie.vote4 + movie.vote5}}
-        </p>
         <button ng-click = "calculateMovie()">Calculate</button>
         <h1>The winner is . . . {{winner | uppercase}}</h1>
         </div>
